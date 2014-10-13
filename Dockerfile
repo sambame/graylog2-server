@@ -21,7 +21,3 @@ RUN java -Delasticsearch -Des.path.home="/opt" $properties -cp "$GRAYLOG_HOME/*"
 EXPOSE 12900
 
 CMD  ["java", "-jar", "/opt/graylog2-server/graylog2-server.jar"]
-
-
-gcutil setinstancemetadata es-replica-98kn --metadata=es_port:9301 --fingerprint=t43H8Su-DdU=
-gcutil setinstancemetadata logstash-qx89 --metadata=es_port:9301 --fingerprint=WNA1jgVDnDI= 
