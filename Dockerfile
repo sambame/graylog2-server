@@ -4,10 +4,12 @@ MAINTAINER Shay Erlichmen "shay@samba.me"
 RUN DEBIAN_FRONTEND=noninteractive apt-get install -y pwgen libdigest-sha-perl
 
 ENV GRAYLOG_HOME /opt/graylog2-server
-ENV GRAYLOG_VER 0.91.0-rc.1
+ENV GRAYLOG_VER 0.92.0-SNAPSHOT-20141013094908
 
 WORKDIR /opt/
-RUN curl -L http://packages.graylog2.org/releases/graylog2-server/graylog2-server-${GRAYLOG_VER}.tgz | tar zx
+RUN curl -L http://packages.graylog2.org/nightly-builds/graylog2-server-0.92.0-SNAPSHOT-20141013094908.tar.gz | tar zx
+
+
 
 # server
 RUN ln -sf /opt/graylog2-server-${GRAYLOG_VER} ${GRAYLOG_HOME}
@@ -19,3 +21,7 @@ RUN java -Delasticsearch -Des.path.home="/opt" $properties -cp "$GRAYLOG_HOME/*"
 EXPOSE 12900
 
 CMD  ["java", "-jar", "/opt/graylog2-server/graylog2-server.jar"]
+
+
+gcutil setinstancemetadata es-replica-98kn --metadata=es_port:9301 --fingerprint=t43H8Su-DdU=
+gcutil setinstancemetadata logstash-qx89 --metadata=es_port:9301 --fingerprint=WNA1jgVDnDI= 
