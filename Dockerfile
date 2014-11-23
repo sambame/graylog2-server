@@ -2,7 +2,7 @@ FROM charliek/openjdk-jre-7
 MAINTAINER Shay Erlichmen "shay@samba.me"
 
 ENV GRAYLOG_HOME /opt/graylog2-server
-ENV GRAYLOG_VER 0.92.0-beta.1
+ENV GRAYLOG_VER graylog2-server-0.92.0-rc.1
 
 WORKDIR /opt/
 RUN curl -L http://packages.graylog2.org/releases/graylog2-server/graylog2-server-${GRAYLOG_VER}.tgz | tar zx
